@@ -21,19 +21,22 @@ import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../typ
 import LinkingConfiguration from './LinkingConfiguration';
 
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import Store from '../store';
 
 const Drawer = createDrawerNavigator();
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Drawer.Navigator>
-        <Drawer.Screen name="Tab1" component={NestedNavigator} />
-        <Drawer.Screen name="Tab2" component={TabTwoScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Store>
+      <NavigationContainer
+        linking={LinkingConfiguration}
+        theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Drawer.Navigator>
+          <Drawer.Screen name="Tab1" component={NestedNavigator} />
+          <Drawer.Screen name="Tab2" component={TabTwoScreen} />
+        </Drawer.Navigator>
+      </NavigationContainer>
+    </Store>
   );
 }
 
