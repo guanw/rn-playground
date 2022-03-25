@@ -2,11 +2,11 @@ import { Button, StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
-import { Context } from '../store';
+import { AppContext } from '../store';
 import { useContext } from 'react';
 
 function TabTwoScreen() {
-  const [state, dispatch] = useContext(Context);
+  const { state, dispatch } = useContext(AppContext);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab Two</Text>
